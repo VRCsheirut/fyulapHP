@@ -301,8 +301,55 @@
             </div>
 
             <div class="cast-group-title" style="margin-top: 2.5rem;">1期生</div>
-            <div class="coming-soon-box">
-                Coming Soon...
+            <div class="cast-grid">
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/るかしゃん.png');"
+                         data-x="https://x.com/Rukashan_"
+                         data-tap="images/るかしゃんタップ.png"></div>
+                    <div class="cast-name">るかしゃん</div>
+                </div>
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/Rinko.png');"
+                         data-x="https://x.com/mochipandarin"
+                         data-tap="images/Rinkoタップ.png"></div>
+                    <div class="cast-name">Rinko</div>
+                </div>
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/なぎとろ.png');"
+                         data-x="https://x.com/nagi_toro_vrc"
+                         data-tap="images/なぎとろタップ.png"></div>
+                    <div class="cast-name">なぎとろ</div>
+                </div>
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/もあこ.png');"
+                         data-x="https://x.com/nofnca"
+                         data-tap="images/もあこタップ.png"></div>
+                    <div class="cast-name">もあこ</div>
+                </div>
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/もか.png');"
+                         data-x="https://x.com/moca_sky_bon"
+                         data-tap="images/もかタップ.png"></div>
+                    <div class="cast-name">もか</div>
+                </div>
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/をさかな.png');"
+                         data-x="https://x.com/OSAKANA_122"
+                         data-tap="images/をさかなタップ.png"></div>
+                    <div class="cast-name">をさかな</div>
+                </div>
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/白もふ.png');"
+                         data-x="https://x.com/shiro_mofu"
+                         data-tap="images/白もふタップ.png"></div>
+                    <div class="cast-name">白もふ</div>
+                </div>
+                <div class="cast-card">
+                    <div class="cast-avatar" style="background-image: url('images/まりんば.png');"
+                         data-x="https://x.com/marinba147"
+                         data-tap="images/まりんばタップ.png"></div>
+                    <div class="cast-name">まりんば</div>
+                </div>
             </div>
         </section>
     </div>
@@ -311,9 +358,14 @@
         <div class="modal-content">
             <button class="close-btn" id="modal-close" aria-label="閉じる">&times;</button>
             <img id="modal-tap-img" class="modal-large-img" src="" alt="キャストタップ画像">
-            <a id="modal-x-link" href="#" target="_blank" rel="noopener noreferrer" class="profile-x-btn">
-                Xをみる ↗
-            </a>
+            <div id="modal-x-links" style="display:flex; gap:0.7rem; flex-wrap:wrap; justify-content:center;">
+                <a id="modal-x-link" href="#" target="_blank" rel="noopener noreferrer" class="profile-x-btn">
+                    Xをみる ↗
+                </a>
+                <a id="modal-x-link2" href="#" target="_blank" rel="noopener noreferrer" class="profile-x-btn" style="display:none;">
+                    Xをみる ↗
+                </a>
+            </div>
         </div>
     </div>
 
@@ -360,6 +412,7 @@
             const modal = document.getElementById('image-modal');
             const modalTapImg = document.getElementById('modal-tap-img');
             const modalXLink = document.getElementById('modal-x-link');
+            const modalXLink2 = document.getElementById('modal-x-link2');
             const modalClose = document.getElementById('modal-close');
             const avatars = document.querySelectorAll('.cast-avatar');
 
