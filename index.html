@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「フィユラプ - Fyulap -」</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ページ切り替え用のスタイル：非アクティブなセクションを隠す */
+        .page-section {
+            display: none;
+        }
+        .page-section.is-active {
+            display: block;
+        }
+
+        /* 各ページ固有のスタイルを統合 */
+        section#attention {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            background: var(--white-soft, #ffffff);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(232, 165, 184, 0.15);
+            border: 1.5px solid #f3dbe0;
+            position: relative;
+        }
+
+        .notice-list {
+            list-style-type: '🌷 ';
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 2;
+            max-width: 850px;
+            margin: 0 auto;
+            color: var(--text-dark, #5a4a4a);
+        }
+
+        .notice-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        section#contact {
+            max-width: 800px;
+            margin: 2.5rem auto;
+            background: var(--white-soft, #ffffff);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(232, 165, 184, 0.15);
+            border: 1.5px solid #f3dbe0;
+            position: relative;
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 1rem;
+            line-height: 2.2;
+            color: var(--text-dark, #5a4a4a);
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-btn-wrapper {
+            margin-top: 1.5rem;
+        }
+
+        .x-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background-color: #ffffff;
+            color: var(--deep-pink, #c97389);
+            border: 1.5px solid var(--accent-pink, #e8a5b8);
+            padding: 0.9rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(232, 165, 184, 0.2);
+        }
+
+        .x-contact-btn:hover {
+            background-color: var(--deep-pink, #c97389);
+            color: #ffffff;
+            border-color: var(--deep-pink, #c97389);
+            transform: translateY(-2px);
+        }
+
+        section#join {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            background: var(--white-soft, #ffffff);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(232, 165, 184, 0.15);
+            border: 1.5px solid #f3dbe0;
+            position: relative;
+        }
+
+        .join-intro {
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--text-dark, #5a4a4a);
+            margin-bottom: 3rem;
+        }
+
+        .step-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .step-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff8f9;
+            border: 1.5px solid var(--main-pink, #f8dbdb);
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(232, 165, 184, 0.1);
+            position: relative;
+        }
+
+        .step-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px dashed var(--accent-pink, #e8a5b8);
+            padding-bottom: 0.6rem;
+        }
+
+        .step-number {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--deep-pink, #c97389);
+            line-height: 1;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--deep-pink, #c97389);
+        }
+
+        .step-image-wrap {
+            width: 100%;
+            max-width: 600px;
+            margin: 1rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #f3dbe0;
+            background: #ffffff;
+        }
+
+        .step-image-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .step-text {
+            width: 100%;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--text-dark, #5a4a4a);
+            text-align: left;
+            margin-top: 0.5rem;
+        }
+
+        .step-text a {
+            color: var(--deep-pink, #c97389);
+            font-weight: 600;
+            word-break: break-all;
+            text-decoration: underline;
+        }
+
+        .step-text a:hover {
+            opacity: 0.8;
+        }
+
+        section#cast {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            background: var(--white-soft, #ffffff);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(232, 165, 184, 0.15);
+            border: 1.5px solid #f3dbe0;
+            position: relative;
+        }
+
+        .cast-group-title {
+            font-size: 1.3rem;
+            color: var(--deep-pink, #c97389);
+            border-bottom: 2px solid var(--main-pink, #f8dbdb);
+            padding-bottom: 0.4rem;
+            margin: 2rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .cast-card {
+            background: #fff8f9;
+            border-radius: 16px;
+            border: 1.5px solid #f3dbe0;
+            padding: 1.5rem 0.8rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(232, 165, 184, 0.08);
+        }
+
+        .cast-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--main-pink, #f8dbdb);
+            margin: 0 auto 0.8rem;
+            border: 3px solid #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cast-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 16px rgba(232, 165, 184, 0.45);
+        }
+
+        .cast-name {
+            font-weight: bold;
+            color: var(--text-dark, #5a4a4a);
+            font-size: 0.95rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: #ffffff;
+            padding: 2rem 1.2rem 1.5rem 1.2rem;
+            border-radius: 20px;
+            max-width: 1200px;
+            width: 95%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 3px solid var(--accent-pink, #e8a5b8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .modal-large-img {
+            max-width: 100%;
+            max-height: 60vh;
+            width: auto;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid var(--main-pink, #f8dbdb);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            object-fit: contain;
+            margin-bottom: 1.2rem;
+            background-color: #ffffff;
+        }
+
+        .profile-x-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: #fff;
+            color: var(--deep-pink, #c97389);
+            border: 1.5px solid var(--accent-pink, #e8a5b8);
+            padding: 0.6rem 1.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(232, 165, 184, 0.2);
+        }
+
+        .profile-x-btn:hover {
+            background-color: var(--deep-pink, #c97389);
+            color: #fff;
+            border-color: var(--deep-pink, #c97389);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--deep-pink, #c97389);
+            color: #fff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        section#schedule {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            background: var(--white-soft, #ffffff);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(232, 165, 184, 0.15);
+            border: 1.5px solid #f3dbe0;
+            position: relative;
+        }
+
+        .calendar-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-btn {
+            background: var(--main-pink, #f8dbdb);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--text-dark, #5a4a4a);
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .calendar-btn:hover {
+            background: var(--accent-pink, #e8a5b8);
+            color: #fff;
+        }
+
+        .calendar-title-display {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--deep-pink, #c97389);
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .calendar-table {
+            width: 100%;
+            min-width: 320px;
+            max-width: 850px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .calendar-table th, .calendar-table td {
+            border: 1.5px solid var(--main-pink, #f8dbdb);
+            padding: 0.5rem 0.2rem;
+            height: 55px;
+            vertical-align: middle;
+        }
+
+        .calendar-table th {
+            background-color: #fff0f3;
+            color: var(--deep-pink, #c97389);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 992px) {
+            .cast-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cast-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            section#contact, section#join {
+                padding: 2rem 1.2rem;
+            }
+            .step-card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <span class="site-title-text">Fyulap</span>
+        </div>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="header-toolbar" id="header-toolbar">
+            <ul>
+                <li><a href="#top" data-target="page-top">top</a></li>
+                <li><a href="#news" data-target="page-top">news</a></li>
+                <li><a href="#howtojoin" data-target="page-join">how to join</a></li>
+                <li><a href="#maid" data-target="page-cast">maid</a></li>
+                <li><a href="#schedule" data-target="page-schedule">schedule</a></li>
+                <li><a href="#attention" data-target="page-attention">attention</a></li>
+                <li><a href="#contact" data-target="page-contact">お問い合わせ</a></li>
+                <li><a href="https://x.com/fyulap" target="_blank" rel="noopener noreferrer" class="sns-btn-circle" title="official X"><img src="images/x.png" alt="X" class="sns-icon-img"></a></li>
+                <li><a href="https://vrchat.com/home/group/grp_969b10f2-5420-49b3-8d13-1778eb145fb4" target="_blank" rel="noopener noreferrer" class="sns-btn-circle" title="VRC Group"><img src="images/vrc.png" alt="VRC" class="sns-icon-img"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <audio id="bgm-audio" loop preload="metadata">
+        <source src="audio/0102.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="bgm-fixed-widget">
+        <button id="mute-btn" class="mute-btn" title="ミュート切替" aria-label="ミュート切替">
+            <svg id="icon-volume" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+            <svg id="icon-mute" viewBox="0 0 24 24" style="display: none;">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            </svg>
+        </button>
+        <div class="slider-container">
+            <div id="slider-progress" class="slider-progress"></div>
+            <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.5" aria-label="音量調整">
+        </div>
+    </div>
+
+    <!-- Top & News ページ（ひとつのページとしてまとめて表示） -->
+    <div id="page-top" class="page-section is-active">
+        <div class="hero-slider" id="heroSlider">
+            <div class="slides" id="heroSlides">
+                <div class="slide slide-1"></div>
+                <div class="slide slide-2"></div>
+                <div class="slide slide-3"></div>
+                <div class="slide slide-4"></div>
+                <div class="slide slide-5"></div>
+            </div>
+            <div class="hero-arrows">
+                <button class="hero-arrow-btn" id="heroPrevBtn" aria-label="前の画像へ">〈</button>
+                <button class="hero-arrow-btn" id="heroNextBtn" aria-label="次の画像へ">〉</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <section id="news">
+                <div class="section-title">
+                    <h2>News</h2>
+                    <span>お知らせ</span>
+                </div>
+                <ul class="news-list" id="news-list">
+                    <li class="news-item">
+                        <span class="news-date">2026.09.22</span>
+                        <span class="news-text">公式Webサイトを公開いたしました。</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">2026.10.4</span>
+                        <span class="news-text">メイド紹介ページに1期生を追加しました</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="concept">
+                <div class="section-title">
+                    <h2>Concept</h2>
+                    <span>コンセプト</span>
+                </div>
+                <div class="concept-container">
+                    <div class="concept-block">
+                        <div class="concept-vertical-text">
+                            <p>ここは、ふわふわのウサギたちが</p>
+                            <p>暮らす秘密の庭園屋敷</p>
+                        </div>
+                        <div class="concept-image-box">
+                            <img src="images/Concept Image 01.png" alt="Concept Image 01">
+                        </div>
+                    </div>
+
+                    <div class="concept-block">
+                        <div class="concept-vertical-text">
+                            <p>あなたの心をそっとほどく</p>
+                            <p>優しい時間のための場所。</p>
+                        </div>
+                        <div class="concept-image-box">
+                            <img src="images/Concept Image 02.png" alt="Concept Image 02">
+                        </div>
+                    </div>
+
+                    <div class="concept-block">
+                        <div class="concept-vertical-text">
+                            <p>フィユエちゃんたちがお給仕する</p>
+                            <p>フィユラプへようこそ</p>
+                        </div>
+                        <div class="concept-image-box">
+                            <img src="images/Concept Image 03.png" alt="Concept Image 03">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-footer-wrapper">
+                    <div class="concept-footer-image">
+                        <img src="images/Concept Image 04.png" alt="Concept Footer Image">
+                    </div>
+                    <div class="concept-footer-text">
+                        <p>ここは、夢と現実のはざまにひっそりと佇む庭園屋敷</p>
+                        <p>一通の招待状に導かれたあなたを、フィユエたちが</p>
+                        <p>「ご主人様」としてお迎えいたします。</p>
+                        <p>日々の疲れを解きほぐす</p>
+                        <p>特別な時間をお過ごしいただけますように。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- How to Joinページ -->
+        <div id="page-join" class="page-section">
+            <section id="join">
+                <div class="section-title">
+                    <h2>How to Join</h2>
+                    <span>ご参加までの流れ</span>
+                </div>
+                
+                <p class="join-intro">
+                    フィユラプへのお越しを心よりお待ちしております。<br>
+                    ご入園までのステップをご確認の上、お越しくださいませ。
+                </p>
+
+                <div class="step-container">
+                    <div class="step-card">
+                        <div class="step-header">
+                            <span class="step-number">Step 01</span>
+                            <span class="step-title">営業日の確認</span>
+                        </div>
+                        <div class="step-image-wrap">
+                            <img src="images/joinpicture1.png" alt="営業日の確認">
+                        </div>
+                        <p class="step-text">
+                            公式Xとこのホームページから営業日をご確認ください<br>
+                            隔週火曜日22:00から、月2～3回ほど営業がございます
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-header">
+                            <span class="step-number">Step 02</span>
+                            <span class="step-title">フレンド申請</span>
+                        </div>
+                        <div class="step-image-wrap">
+                            <img src="images/joinpicture2.png" alt="フレンド申請">
+                        </div>
+                        <p class="step-text">
+                            リクイン先になるVRCアカウントにフレンド申請を送ってください<br>
+                            リクイン先はこちら！ <a href="https://t.co/7dU1ryMjXR" target="_blank" rel="noopener noreferrer">https://t.co/7dU1ryMjXR</a>
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-header">
+                            <span class="step-number">Step 03</span>
+                            <span class="step-title">VRChat Groupの参加</span>
+                        </div>
+                        <div class="step-image-wrap">
+                            <img src="images/joinpicture3.png" alt="VRChat Groupの参加">
+                        </div>
+                        <p class="step-text">
+                            VRChat groupに参加 リクイン時刻開始前に通知を送ります！<br>
+                            そのほかにもいろんなお知らせをするからぜひお入りください<br>
+                            <a href="https://vrchat.com/home/group/grp_969b10f2-5420-49b3-8d13-1778eb145fb4" target="_blank" rel="noopener noreferrer">https://fyulapgrp</a>
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-header">
+                            <span class="step-number">Step 04</span>
+                            <span class="step-title">リクエストインバイトの送信</span>
+                        </div>
+                        <div class="step-image-wrap">
+                            <img src="images/joinpicture4.png" alt="リクエストインバイトの送信">
+                        </div>
+                        <p class="step-text">
+                            22:00になりましたらフレンド申請を送ったアカウントに<br>
+                            リクエストインバイト（招待をリクエストする)を１回だけ送信ください
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-header">
+                            <span class="step-number">Step 05</span>
+                            <span class="step-title">ご帰宅</span>
+                        </div>
+                        <div class="step-image-wrap">
+                            <img src="images/joinpicture5.png" alt="ご帰宅">
+                        </div>
+                        <p class="step-text">
+                            お茶会への招待状が送られてきたご主人様にはご帰宅いただくことができます
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-header">
+                            <span class="step-number">Step 06</span>
+                            <span class="step-title">事前のご案内</span>
+                        </div>
+                        <div class="step-image-wrap">
+                            <img src="images/joinpicture6.png" alt="事前のご案内">
+                        </div>
+                        <p class="step-text">
+                            お茶会の前に、むむぷりちゃんから説明を受けます
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-header">
+                            <span class="step-number">Step 07</span>
+                            <span class="step-title">お茶会スタート</span>
+                        </div>
+                        <div class="step-image-wrap">
+                            <img src="images/joinpicture7.png" alt="お茶会スタート">
+                        </div>
+                        <p class="step-text">
+                            お席にご案内されたらお茶会のスタートです<br>
+                            フィユエちゃんのお給仕をどうぞお楽しみください
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Maidページ -->
+        <div id="page-cast" class="page-section">
+            <section id="cast">
+                <div class="section-title">
+                    <h2>Cast</h2>
+                    <span>キャスト紹介</span>
+                </div>
+
+                <div class="cast-group-title">0期生</div>
+                <div class="cast-grid">
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/しぇいる.png');" 
+                             data-x="https://x.com/sheirut_VRC" 
+                             data-tap="images/しぇいるタップ.png"></div>
+                        <div class="cast-name">しぇいる</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/らの.png');" 
+                             data-x="https://x.com/ran0t_a25" 
+                             data-tap="images/らのタップ.png"></div>
+                        <div class="cast-name">らの/卒業済</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/こはる.png');" 
+                             data-x="https://x.com/_k0h4ru_" 
+                             data-tap="images/こはるタップ.png"></div>
+                        <div class="cast-name">こはる</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/みしゃぴ.png');" 
+                             data-x="https://x.com/mishapippi" 
+                             data-tap="images/みしゃぴタップ.png"></div>
+                        <div class="cast-name">みしゃぴ</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/めあちー.png');" 
+                             data-x="https://x.com/meati_1" 
+                             data-tap="images/めあちータップ.png"></div>
+                        <div class="cast-name">めあちー</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/かるら.png');" 
+                             data-x="https://x.com/daily_karla_" 
+                             data-tap="images/かるらタップ.png"></div>
+                        <div class="cast-name">かるら</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/らむね.png');" 
+                             data-x="https://x.com/ramune_vrc" 
+                             data-tap="images/らむねタップ.png"></div>
+                        <div class="cast-name">らむね</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/蒼店長.png');" 
+                             data-x="https://x.com/sou_tencho_vrc" 
+                             data-tap="images/蒼店長タップ.png"></div>
+                        <div class="cast-name">蒼店長</div>
+                    </div>
+                </div>
+
+                <div class="cast-group-title" style="margin-top: 2.5rem;">1期生</div>
+                <div class="cast-grid">
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/るかしゃん.png');"
+                             data-x="https://x.com/Rukashan_"
+                             data-tap="images/るかしゃんタップ.png"></div>
+                        <div class="cast-name">るかしゃん</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/Rinko.png');"
+                             data-x="https://x.com/mochipandarin"
+                             data-tap="images/Rinkoタップ.png"></div>
+                        <div class="cast-name">Rinko</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/なぎとろ.png');"
+                             data-x="https://x.com/nagi_toro_vrc"
+                             data-tap="images/なぎとろタップ.png"></div>
+                        <div class="cast-name">なぎとろ</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/もあこ.png');"
+                             data-x="https://x.com/nofnca"
+                             data-tap="images/もあこタップ.png"></div>
+                        <div class="cast-name">もあこ</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/もか.png');"
+                             data-x="https://x.com/moca_vrc_c"
+                             data-tap="images/もかタップ.png"></div>
+                        <div class="cast-name">もか</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/をさかな.png');"
+                             data-x="https://x.com/OSAKANA_122"
+                             data-tap="images/をさかなタップ.png"></div>
+                        <div class="cast-name">をさかな</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/白もふ.png');"
+                             data-x="https://x.com/shiro_mofu"
+                             data-tap="images/白もふタップ.png"></div>
+                        <div class="cast-name">白もふ</div>
+                    </div>
+                    <div class="cast-card">
+                        <div class="cast-avatar" style="background-image: url('images/まりんば.png');"
+                             data-x="https://x.com/marinba147"
+                             data-tap="images/まりんばタップ.png"></div>
+                        <div class="cast-name">まりんば</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Scheduleページ -->
+        <div id="page-schedule" class="page-section">
+            <section id="schedule">
+                <div class="section-title">
+                    <h2>Schedule</h2>
+                    <span>営業日カレンダー</span>
+                </div>
+                <p style="text-align: center; margin-bottom: 1.5rem; font-size: 0.85rem;">※営業日および開場時間は変更となる場合がございます。</p>
+
+                <div class="calendar-controls">
+                    <button id="prev-month" class="calendar-btn">◀ 前の月</button>
+                    <span id="current-month-display" class="calendar-title-display"></span>
+                    <button id="next-month" class="calendar-btn">次の月 ▶</button>
+                </div>
+
+                <div class="calendar-wrapper">
+                    <table class="calendar-table">
+                        <thead>
+                            <tr>
+                                <th style="color: #e8a5b8;">日</th>
+                                <th>月</th>
+                                <th>火</th>
+                                <th>水</th>
+                                <th>木</th>
+                                <th>金</th>
+                                <th style="color: #9bb7d4;">土</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Attentionページ -->
+        <div id="page-attention" class="page-section">
+            <section id="attention">
+                <div class="section-title">
+                    <h2>Attention</h2>
+                    <span>庭園屋敷からのご案内</span>
+                </div>
+                <ul class="notice-list">
+                    <li>アバター容量が50MBを超える場合は、ご入園いただけません。</li>
+                    <li>過度にまぶしい光や大きな音、ワールドへの負荷が大きいシェーダーの使用はご遠慮ください。</li>
+                    <li>露出の多いアバターでのご来園はご遠慮ください。</li>
+                    <li>ほかのご主人様やメイドさんのご迷惑となる行為はおやめください。</li>
+                    <li>メイドさんへのフレンド申請はご遠慮いただいております。</li>
+                    <li>許可なく録音・録画・配信を行うことは禁止しております。</li>
+                    <li>お約束を守っていただけない場合、今後のご入園をお断りする場合がございます。</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Contactページ -->
+        <div id="page-contact" class="page-section">
+            <section id="contact">
+                <div class="section-title">
+                    <h2>Contact</h2>
+                    <span>お問い合わせ</span>
+                </div>
+                
+                <p class="contact-text">
+                    お問い合わせは、現在公式Xから受け付けています。<br>
+                    どんな些細なことでもお答えいたします、イベントの質問 コラボ依頼等常時受け付け中<br>
+                    順次運営がお返事させていただきます。少しお時間をいただく場合があります。
+                </p>
+
+                <div class="contact-btn-wrapper">
+                    <a href="https://x.com/fyulap" target="_blank" rel="noopener noreferrer" class="x-contact-btn">
+                        Xにて問い合わせる ↗
+                    </a>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Cast Image Modal -->
+    <div id="image-modal" class="modal" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-btn" id="modal-close" aria-label="閉じる">&times;</button>
+            <img id="modal-tap-img" class="modal-large-img" src="" alt="キャストタップ画像">
+            <div id="modal-x-links" style="display:flex; gap:0.7rem; flex-wrap:wrap; justify-content:center;">
+                <a id="modal-x-link" href="#" target="_blank" rel="noopener noreferrer" class="profile-x-btn">
+                    Xをみる ↗
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-sns-links">
+            <a href="https://x.com/fyulap" target="_blank" rel="noopener noreferrer" class="sns-btn-circle" title="official X"><img src="images/x.png" alt="X" class="sns-icon-img"></a>
+            <a href="https://vrchat.com/home/group/grp_969b10f2-5420-49b3-8d13-1778eb145fb4" target="_blank" rel="noopener noreferrer" class="sns-btn-circle" title="VRC Group"><img src="images/vrc.png" alt="VRC" class="sns-icon-img"></a>
+        </div>
+        <p>© Fyulap All Rights Reserved. しぇいる / Photo by 藍香</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('fade-in');
+
+            // モバイルメニューの開閉
+            const menuToggle = document.getElementById('menu-toggle');
+            const headerToolbar = document.getElementById('header-toolbar');
+
+            menuToggle.addEventListener('click', () => {
+                headerToolbar.classList.toggle('is-open');
+            });
+
+            // ページ切り替え（タブ切り替え）の仕組み
+            const navLinks = document.querySelectorAll('.header-toolbar a[data-target]');
+            const pageSections = document.querySelectorAll('.page-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+
+                    // すべてのセクションを非表示にし、対象のセクションだけを表示
+                    pageSections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('is-active');
+                        } else {
+                            section.classList.remove('is-active');
+                        }
+                    });
+
+                    // モバイルメニューが開いている場合は閉じる
+                    if (headerToolbar.classList.contains('is-open')) {
+                        headerToolbar.classList.remove('is-open');
+                    }
+
+                    // ページトップへスムーズにスクロール
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            // BGMスクリプトの読み込み
+            const bgmScript = document.createElement('script');
+            bgmScript.src = 'bgm.js';
+            document.body.appendChild(bgmScript);
+
+            // ヒーロースライダーの処理
+            const heroSlider = document.getElementById('page-top');
+            const heroSlides = document.getElementById('heroSlides');
+            const slideItems = heroSlides.querySelectorAll('.slide');
+            const heroPrevBtn = document.getElementById('heroPrevBtn');
+            const heroNextBtn = document.getElementById('heroNextBtn');
+
+            let currentIndex = 0;
+            const totalSlides = slideItems.length;
+            const slideIntervalTime = 4000;
+            let slideTimer;
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            function updateSlide() {
+                heroSlides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlide();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            }
+
+            function startSlideTimer() {
+                clearInterval(slideTimer);
+                slideTimer = setInterval(nextSlide, slideIntervalTime);
+            }
+
+            function resetSlideTimer() {
+                clearInterval(slideTimer);
+                startSlideTimer();
+            }
+
+            heroNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextSlide();
+                resetSlideTimer();
+            });
+
+            heroPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                prevSlide();
+                resetSlideTimer();
+            });
+
+            heroSlider.addEventListener('mouseenter', () => clearInterval(slideTimer));
+            heroSlider.addEventListener('mouseleave', () => startSlideTimer());
+
+            heroSlider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(slideTimer);
+            }, { passive: true });
+
+            heroSlider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeThreshold = 50;
+                if (touchStartX - touchEndX > swipeThreshold) nextSlide();
+                else if (touchEndX - touchStartX > swipeThreshold) prevSlide();
+                startSlideTimer();
+            }, { passive: true });
+
+            startSlideTimer();
+
+            // Concept アニメーション監視
+            const conceptTargets = document.querySelectorAll('.concept-block, .concept-footer-wrapper');
+            const conceptObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            conceptTargets.forEach(el => conceptObserver.observe(el));
+
+            // Cast モーダル処理
+            const modal = document.getElementById('image-modal');
+            const modalTapImg = document.getElementById('modal-tap-img');
+            const modalXLink = document.getElementById('modal-x-link');
+            const modalClose = document.getElementById('modal-close');
+            const avatars = document.querySelectorAll('.cast-avatar');
+
+            avatars.forEach(avatar => {
+                avatar.addEventListener('click', () => {
+                    const tapImg = avatar.getAttribute('data-tap');
+                    const xUrl = avatar.getAttribute('data-x');
+                    
+                    modalTapImg.src = tapImg || '';
+                    modalXLink.href = xUrl || '#';
+
+                    modal.style.display = 'flex';
+                    modal.setAttribute('aria-hidden', 'false');
+                });
+            });
+
+            const closeModal = () => {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+            };
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+            });
+
+            // Schedule カレンダー処理
+            const calendarBody = document.getElementById('calendar-body');
+            const currentMonthDisplay = document.getElementById('current-month-display');
+            const prevBtn = document.getElementById('prev-month');
+            const nextBtn = document.getElementById('next-month');
+
+            let currentDate = new Date(2026, 8, 1);
+            const baseDate = new Date(2026, 8, 8);
+            baseDate.setHours(0, 0, 0, 0);
+
+            function isBiweeklyTuesday(targetDate) {
+                targetDate.setHours(0, 0, 0, 0);
+                const diffTime = targetDate.getTime() - baseDate.getTime();
+                const diffDays = Math.round(diffTime / (1000 * 3600 * 24));
+                return diffDays >= 0 && diffDays % 14 === 0;
+            }
+
+            function renderCalendar(date) {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+
+                currentMonthDisplay.textContent = `${year}年 ${month + 1}月`;
+                calendarBody.innerHTML = '';
+
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                let dateCount = 1;
+                let html = '';
+
+                for (let i = 0; i < 6; i++) {
+                    let row = '<tr>';
+                    let hasDate = false;
+
+                    for (let j = 0; j < 7; j++) {
+                        if ((i === 0 && j < firstDay) || dateCount > daysInMonth) {
+                            row += '<td></td>';
+                        } else {
+                            hasDate = true;
+
+                            let colorStyle = '';
+                            if (j === 0) colorStyle = 'color: #e8a5b8;';
+                            if (j === 6) colorStyle = 'color: #9bb7d4;';
+
+                            const thisDate = new Date(year, month, dateCount);
+                            const showTulip = isBiweeklyTuesday(thisDate);
+                            const tulipMark = showTulip 
+                                ? '<div style="font-size: 0.9em; margin-top: 2px;">🌷</div>' 
+                                : '';
+
+                            row += `
+                                <td style="${colorStyle} vertical-align: top; padding: 6px 2px;">
+                                    <strong>${dateCount}</strong>
+                                    ${tulipMark}
+                                </td>`;
+                            
+                            dateCount++;
+                        }
+                    }
+                    row += '</tr>';
+                    if (hasDate) html += row;
+                }
+                calendarBody.innerHTML = html;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar(currentDate);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar(currentDate);
+            });
+
+            renderCalendar(currentDate);
+        });
+    </script>
+</body>
+</html>
